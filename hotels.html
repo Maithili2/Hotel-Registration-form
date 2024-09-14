@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Available Hotels</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Available Hotels</h2>
+        <div class="hotel-list">
+            <div class="hotel">
+                <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0d/c5/6a/20/double-room.jpg?w=700&h=-1&s=1" alt="Hotel Paradise Room" class="hotel-img">
+                <div class="hotel-info">
+                    <h3>Hotel Paradise</h3>
+                    <p>Price: $150 per night</p>
+                    <p>Discount: 40%</p>
+                    <button class="book-now" onclick="bookHotel('Hotel Paradise')">Book Now</button>
+                </div>
+            </div>
+            <div class="hotel">
+                <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1c/4b/2e/bf/des-lux-hotel.jpg?w=700&h=-1&s=1" alt="Hotel Grand Room" class="hotel-img">
+                <div class="hotel-info">
+                    <h3>Hotel Grand</h3>
+                    <p>Price: $200 per night</p>
+                    <p>Discount: 40%</p>
+                    <button class="book-now" onclick="bookHotel('Hotel Grand')">Book Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="bookingModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Book <span id="hotelName"></span></h2>
+            <form id="finalBookingForm" onsubmit="return confirmBooking()">
+                <label for="name">Name:</label>
+                <input type="text" id="name" required>
+                <br>
+                <br>
+
+                <label for="mobile">Mobile Number:</label>
+                <input type="text" id="mobile" required>
+                <br>
+                <br>
+
+                <button type="submit">Confirm Booking</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="statusModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeStatusModal()">&times;</span>
+            <p>Thank you for Booking!</p>
+        </div>
+    </div>
+
+    <script>
+        function bookHotel(hotelName) {
+            document.getElementById('hotelName').textContent = hotelName;
+            document.getElementById('bookingModal').style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('bookingModal').style.display = 'none';
+        }
+
+        function confirmBooking() {
+            const mobile = document.getElementById('mobile').value.trim();
+            const mobilePattern = /^[0-9]{10}$/;
+
+            if (!mobilePattern.test(mobile)) {
+                alert("Please enter a valid 10-digit mobile number.");
+                return false;
+            }
+
+            // Hide the booking modal and show the status modal
+            document.getElementById('bookingModal').style.display = 'none';
+            document.getElementById('statusModal').style.display = 'block';
+
+            return false; // Prevent actual form submission
+        }
+
+        function closeStatusModal() {
+            document.getElementById('statusModal').style.display = 'none';
+        }
+    </script>
+</body>
+</html>

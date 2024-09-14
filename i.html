@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Layout Wireframe</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+        .container {
+            padding: 20px;
+        }
+        .factory-panel {
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+        .factory-panel h2 {
+            background-color: #f4f4f4;
+            padding: 10px;
+            margin: 0;
+            cursor: pointer;
+        }
+        .machine-list {
+            padding: 10px;
+        }
+        .machine {
+            padding: 5px;
+            border-bottom: 1px solid #ddd;
+        }
+        .status-ok { color: green; }
+        .status-warning { color: yellow; }
+        .status-critical { color: red; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Daikibo Machine Health Dashboard</h1>
+    </div>
+    <div class="container">
+        <div class="factory-panel">
+            <h2>Factory 1 [Expand/Collapse]</h2>
+            <div class="machine-list">
+                <div class="machine status-ok">Machine 1: OK</div>
+                <div class="machine status-warning">Machine 2: Warning</div>
+                <div class="machine status-critical">Machine 3: Critical</div>
+                <!-- Add more machines here -->
+            </div>
+        </div>
+        <div class="factory-panel">
+            <h2>Factory 2 [Expand/Collapse]</h2>
+            <div class="machine-list">
+                <!-- Add machines here -->
+            </div>
+        </div>
+        <!-- Add more factory panels here -->
+    </div>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adani One Hotel Booking</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="search-container">
+            <h2>Hotels</h2>
+            <p>Experience Effortless Bookings with Adani One</p>
+            <form id="bookingForm" onsubmit="return validateForm()">
+                <input type="text" id="cityOrHotel" placeholder="Enter City or Hotel">
+                <div class="date-container">
+                    <label>
+                        Check-in
+                        <input type="date" id="checkin">
+                    </label>
+                    <label>
+                        Check-out
+                        <input type="date" id="checkout">
+                    </label>
+                </div>
+                <div class="room-container">
+                    <label>
+                        Rooms & Guests
+                        <select id="guests">
+                            <option value="">Select Rooms & Guests</option>
+                            <option>1 Room | 2 Adults</option>
+                            <option>2 Rooms | 4 Adults</option>
+                            <!-- Add more options as needed -->
+                        </select>
+                    </label>
+                </div>
+                <button type="submit">Search Hotels</button>
+            </form>
+        </div>
+        <div class="promo-container">
+            <p>Wish you Good night!</p>
+            <br>
+            <h2>Up to 70% off on Domestic Hotels.</h2>
+            <p>Code: <strong>DOMSTAY</strong></p>
+            <button>Know More</button>
+            <p class="terms">T&C apply.</p>
+        </div>
+    </div>
+    <script>
+        function validateForm() {
+            const cityOrHotel = document.getElementById('cityOrHotel').value.trim();
+            const checkin = document.getElementById('checkin').value;
+            const checkout = document.getElementById('checkout').value;
+            const guests = document.getElementById('guests').value;
+
+            if (!cityOrHotel || !checkin || !checkout || !guests) {
+                alert("Please fill in all fields.");
+                return false;
+            }
+
+            if (new Date(checkin) >= new Date(checkout)) {
+                alert("Check-out date must be after check-in date.");
+                return false;
+            }
+
+            // Redirect to hotels page
+            window.location.href = 'hotels.html';
+            return false; // Prevent actual form submission
+        }
+    </script>
+</body>
+</html>
